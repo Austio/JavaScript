@@ -11,10 +11,10 @@ function getFile(url) {
 
     console.log('Requesting: ' + url)
 
-    var anon = function () {
+    function anon () {
       resolve(fake_responses[url])
     }
-    setTimeout(anon, randomDelay)
+    setTimeout(anon.bind(this), randomDelay)
   })
 }
 
