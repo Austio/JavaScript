@@ -1,0 +1,36 @@
+<html>
+<head>
+    <title>Chat Example</title>
+    <script src='/socket.io/socket.io.js'></script>
+    <script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js'></script>
+    <script>
+        var socket = io.connect()
+        socket.on('chat', function (data) {
+            $('textarea').val($('textarea').val() + data.nickname + ': ' +
+              data.message + '\n')
+        })
+
+        $(function () {
+          data = {}
+          $('#set').on('click', function () {
+            socket.emit('nickname', $('#nickname').val())
+          })
+          $('#send').on('click', function () {
+            socket.emit('chat', {
+              message : $('#message').val()
+            })
+          })
+        })
+    </script>
+</head>
+<body>
+    <h1>Simple Chat</h1>
+    <input id='nickname' type='text'/>
+    <button id='set'>Set Nickname</button>
+    <textarea style='height:300px;width:500px;'></textarea>
+    <p>
+    <input id='message' type="text"/>
+    <button id='send'>Send Chat Message</button>
+    </p>
+</body>
+</html>
