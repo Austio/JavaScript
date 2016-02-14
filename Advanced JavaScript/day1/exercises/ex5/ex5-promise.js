@@ -1,6 +1,6 @@
 'use strict'
 
-function getFile(url) {
+function getFile (url) {
   return new Promise(function (resolve, reject) {
     var fake_responses = {
 		  'file1': 'The first text',
