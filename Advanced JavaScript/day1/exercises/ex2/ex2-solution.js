@@ -1,3 +1,5 @@
+'use strict'
+
 var notesModule = (function () {
 
   function addNote (note) {
@@ -49,7 +51,6 @@ var notesModule = (function () {
   }
 
   function handleEnter (evt) {
-    console.log('handleEnter')
 	  if (evt.which == 13) {
 		  addCurrentNote()
 	  }
@@ -73,7 +74,8 @@ var notesModule = (function () {
     init: function () {
 	    // build the initial list from the existing `notes` data
 	    var html = ''
-	    for (i=0; i<notes.length; i++) {
+	    var i
+	    for (i = 0; i < notes.length; i++) {
 		    html += '<a href=\'#\' class=\'note\'>' + notes[i] + '</a>'
 	    }
 	    $('#notes').html(html)
