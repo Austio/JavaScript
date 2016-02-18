@@ -1,3 +1,5 @@
+'use strict'
+
 var Person = require('./Person')
 var logger = require('./logger')
 

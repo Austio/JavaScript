@@ -1,3 +1,5 @@
+'use strict'
+
 var express = require('express')
 var http = require('http')
 var path = require('path')
@@ -27,11 +29,11 @@ io.sockets.on('connection', function (socket) {
     socket.on('nickname', function (nickname) {
       socket.set('nickname', nickname)
     })
-    
+
     socket.on('chat', function (data) {
         socket.get('nickname', function (err, nickname) {
           var nickname = err ? 'Anonymous' : nickname
-          
+
           var payload = {
             message : data.message,
             nickname : nickname

@@ -1,3 +1,4 @@
+'use strict'
 // Module dependencies
 var express = require('express')
 var http = require('http') 
@@ -7,7 +8,7 @@ var cookieSessions = require('./cookie-sessions')
 var app = express()
 
 // Configure an express app
-app.configure(function(){
+app.configure(function () {
     app.set('port', process.env.PORT || 3000)
     app.set('views', __dirname + '/views')
     app.set('view engine', 'ejs')
@@ -32,17 +33,17 @@ var sessionInfo = {
 }
 
 // Create session middleware
-var session = function(request, response, next) {
+var session = function (request, response, next) {
     request.session = sessionInfo
     next()
 }
 
 // Handle GET request to root URL
-app.get('/', session, function(request, response) {
+app.get('/', session, function (request, response) {
     response.render('index', { name : request.session.name })
 })
 
-app.post('/login', function(request, response) {
+app.post('/login', function (request, response) {
     // Update our session state with the undername submitted by the form
     sessionInfo.name = request.body.username
     response.redirect('/')

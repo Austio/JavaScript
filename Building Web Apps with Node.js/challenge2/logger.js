@@ -1,3 +1,5 @@
+'use strict'
+
 function info (loggingStr) {
   console.log(new Date() + ' ' + loggingStr)
 }
