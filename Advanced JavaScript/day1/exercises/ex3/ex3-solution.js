@@ -1,3 +1,5 @@
+'use strict'
+
 function NotesManager (data) {
   this.notes = data
 }
@@ -74,7 +76,8 @@ NotesManager.prototype.handleNoteClick = function (evt) {
 NotesManager.prototype.init = function () {
   // build the initial list from the existing `notes` data
   var html = ''
-  for (i=0; i<this.notes.length; i++) {
+  var i
+  for (i = 0; i < this.notes.length; i++) {
     html += '<a href=\'#\' class=\'note\'>' + this.notes[i] + '</a>'
   }
   $('#notes').html(html)
